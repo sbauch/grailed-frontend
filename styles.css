@@ -101,7 +101,6 @@ p{
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 60px;
-
 }
 
 .photo-bucket > div > img{
@@ -126,7 +125,6 @@ p{
 .photo-bucket > div > .item-name{
   margin-bottom: 8px;
 }
-
 
 .photo-bucket > div > .price{
   font-weight: bold;
