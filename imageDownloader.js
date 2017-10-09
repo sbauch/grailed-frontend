@@ -1,51 +1,41 @@
 class ImageDownloader {
 
-  constructor() {
+  constructor(chunkSize, getImageUrl) {
+    this.CHUNK_SIZE = chunkSize;
+    this.getImageUrl = getImageUrl;
     this.imageRequests = [];
   }
 
   cancelDownloads() {
-    this.imageRequests.forEach((request) => request.abort())
+    this.imageRequests.forEach((request) => request.abort());
   }
 
   downloadChunk(arr, callback) {
-    let images = [];
-    for (var id of arr) {
+    return new Promise((resolve, reject) => {
+      let images = [];
+      for (var id of arr) {
         this.downloadImage(id, (image) => {
-          images.push(image)
-          callback(images)
-      })
-    }
+          images.push(image);
+          if (images.length == this.CHUNK_SIZE) {
+            resolve(images);
+          }
+        });
+      }
+    });
   }
 
   downloadImage(id, callback) {
     const img = new Image();
-    img.onload = () => this.imageDrawn(id);
-
     const url = this.getImageUrl(id);
-    const request = new XMLHttpRequest();
-    request.open("GET", url, true);
-    request.onload = () => {
-      if (request.readyState === 4) {
-        if (request.status === 200) {
-          img.src = url;
-          console.log("download complete");
-          callback(img)
-        }
-      }
-    };
+    const request = $.ajax({
+      url: url,
+      success: () => {
+        img.src = url;
+        callback(img);
+      },
+    });
 
-    request.onerror = (e) => {
-      console.error(request.statusText);
-    };
-
-    this.imageRequests.push(request) // so we can abort
-
-    request.send();
+    this.imageRequests.push(request); // so we can abort
+    return request;
   }
-
-  imageDrawn() {
-
-  }
-
 }
