@@ -3,10 +3,21 @@ $(() => {
   const CHUNK_SIZE = 5;
 
   const $bucket = $('.photo-bucket');
-  const draw = img => $bucket.append(`<img src="${img.src}" />`);
+  const draw = img => $bucket.append(`
+    <div>
+      <img src="${img.src}" />
+      <p class="relative-time">1 minute ago</p>
+      <div class="brand-and-size">
+        <p class="brand">Fear of Jerry</p>
+        <p class="size">M</p>
+      </div>
+      <p class="item-name">Oversize Striped Tee</p>
+      <p class="price">$240</p>
+    </div>
+  `);
 
   // NOTE: The height and width variables can be changed to fetch different sized images.
-  const getImageUrl = id => `https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/cache=expiry:max/rotate=deg:exif/rotate=deg:0/resize=width:30,height:30,fit:crop/output=format:jpg,quality:95/compress/${id}`;
+  const getImageUrl = id => `https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/cache=expiry:max/rotate=deg:exif/rotate=deg:0/resize=width:400,height:600,fit:crop/output=format:jpg,quality:95/compress/${id}`;
   const drawChunk = (imgArray) => imgArray.forEach(img => draw(img));
 
   const downloader = new ImageDownloader(CHUNK_SIZE, getImageUrl);

@@ -1,0 +1,133 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+a{
+  color: inherit;
+}
+
+p{
+  margin: 0;
+}
+
+.container{
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero{
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding-right: 55%;
+
+  background-image: url('images/hero.png');
+  background-position:  right;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  margin-bottom: 80px;
+}
+
+
+.hero > .breadcrumb {
+  margin: 0;
+  color: grey;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.hero > .headline {
+  margin: 20px 0;
+  font-size: 50px;
+}
+
+.hero > a {
+  margin-bottom: 0;
+}
+
+.curated-items{
+  margin-bottom: 60px;
+}
+
+.curated-item{
+  height: 500px;
+  width: 32%;
+  display: inline-block;
+
+  overflow-x: visible;
+
+  background-image: url('images/featured-look.png');
+  background-size: 80%;
+  background-repeat: no-repeat;
+
+  position: relative;
+}
+
+.curated-item > p {
+  font-size: 20px;
+  right: -30px;
+}
+
+.curated-item.top{
+  background-position: top left;
+}
+
+.curated-item.top > p {
+  position: absolute;
+  top: 20px;
+}
+
+.curated-item.bottom{
+  background-position:  bottom left;
+}
+
+.curated-item.bottom > p {
+  position: absolute;
+  bottom: 20px;
+}
+
+.for-you{
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.photo-bucket{
+  padding: 5%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 60px;
+
+}
+
+.photo-bucket > div > img{
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.photo-bucket > div > .relative-time{
+  color: grey;
+  font-size: 10px;
+  margin-bottom: 8px;
+}
+
+.photo-bucket > div > .brand-and-size{
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.photo-bucket > div > .item-name{
+  margin-bottom: 8px;
+}
+
+
+.photo-bucket > div > .price{
+  font-weight: bold;
+}
